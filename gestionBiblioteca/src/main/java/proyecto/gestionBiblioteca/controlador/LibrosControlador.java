@@ -3,6 +3,7 @@ package proyecto.gestionBiblioteca.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import proyecto.gestionBiblioteca.modelo.Libros;
 import proyecto.gestionBiblioteca.servicio.ILibrosServicio;
 
+@Controller
 public class LibrosControlador {
 	
 	@Autowired
@@ -41,16 +43,16 @@ public class LibrosControlador {
     }
 
     // editar un libro
-    @GetMapping("/editar/{id}")
+    @GetMapping("/editarLibro/{id}")
     public String actualizarLibros(Model model, @PathVariable(value="id") int id) {
         
-        model.addAttribute("nuevoLibros", servicioLibro.buscarId(id));
-        return "editarLibro"; // Nombre del archivo HTML para editar un libro
+        model.addAttribute("nuevoLibro", servicioLibro.buscarId(id));
+        return "nuevoLibro"; // Nombre del archivo HTML para editar un libro
     }
 
 
     // Eliminar un libro
-    @GetMapping("/eliminar/{id}")
+    @GetMapping("/eliminarLibro/{id}")
     public String eliminarLibros(@PathVariable(value="id") int id) {
         servicioLibro.eliminarLibros(id);
         return "redirect:/libros";
