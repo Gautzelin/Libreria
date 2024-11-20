@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d4f7d4; /* Fondo verde claro */
+            position: relative;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fondo decorativo con círculos */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .circle-1 {
+            background-color: #ff7979;
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 15%;
+        }
+
+        .circle-2 {
+            background-color: #f6e58d;
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            right: 10%;
+        }
+
+        .circle-3 {
+            background-color: #7ed6df;
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            right: 25%;
+        }
+
+        .circle-4 {
+            background-color: #badc58;
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 5%;
+        }
+
+        /* Contenedor del formulario */
+        .login-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        /* Estilos de los inputs */
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Botón */
+        button {
+            background-color: #27ae60;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        /* Mensaje de error */
+        .error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Círculos decorativos -->
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+    <div class="circle circle-4"></div>
+
+    <!-- Contenedor del formulario -->
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form th:action="@{/login}" method="post" th:object="${credenciales}">
+            <div>
+                <input type="email" id="email" th:field="*{email}" placeholder="Ingrese su email" required>
+            </div>
+            <div>
+                <input type="password" id="password" th:field="*{password}" placeholder="Ingrese su contraseña" required>
+            </div>
+            <div>
+                <button type="submit">Iniciar Sesión</button>
+                <button class="register-btn" th:onclick="'location.href=\'/nuevoUsuario\''">Registrarse</button>
+            </div>
+            <div th:if="${error != null}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
+        </form>
+        
+        
+    </div>
+</body>
+</html>

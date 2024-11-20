@@ -1,0 +1,76 @@
+
+<!doctype html>
+
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Plantilla/Plantilla}">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+<title>Fluid - Layouts | Materio - Bootstrap Material Design
+	Admin Template</title>
+
+<meta name="description" content="" />
+
+
+</head>
+
+<body>
+	<div layout:fragment="espaciocontenidohtml">
+		<!-- Content wrapper -->
+		<div class="content-wrapper">
+			<!-- Content -->
+
+			<div class="container-fluid flex-grow-1 container-p-y">
+				<!--Basic Layout -->
+				<div class="row">
+					<div class="col-xl">
+						<div class="card mb-6">
+							<div
+								class="card-header d-flex justify-content-between align-items-center">
+								<h5 class="mb-0">Registro de Libros</h5>
+								<small class="text-body float-end">Default label</small>
+							</div>
+							<div class="card-body">
+								<form th:action="@{/guardarLibro}" th:object="${nuevoLibro}"
+									method="post">
+									<div class="form-floating form-floating-outline mb-6">
+										<input th:field="*{tituloLibro}" type="text" class="form-control"
+											id="tituloLibro" placeholder="John Doe" /> <label
+											for="basic-default-fullname">Titulo Libro</label>
+									</div>
+									<div class="form-floating form-floating-outline mb-6">
+										<input th:field="*{generoLibro}" type="text" class="form-control"
+											id="generoLibro" placeholder="John Doe" /> <label
+											for="basic-default-fullname">Genero Libro</label>
+									</div>
+									<div class="form-floating form-floating-outline mb-6">
+										<input th:field="*{anioPublicacion}" type="text"
+											class="form-control" id="basic-default-company"
+											placeholder="ACME Inc." /> <label
+											for="basic-default-company">Año Publicación</label>
+									</div>
+
+									<input type="hidden" th:field="*{id}">
+									<!--<div class="form-floating form-floating-outline mb-6">
+												<textarea id="basic-default-message" class="form-control"
+													placeholder="Hi, Do you have a moment to talk Joe?"
+													style="height: 60px;"></textarea>
+												<label for="basic-default-message">Message</label>
+											</div>-->
+									<button type="submit" class="btn btn-primary">Send</button>
+								</form>
+							</div>
+						</div>
+						<!--/ Layout Demo -->
+					</div>
+					<!-- / Content -->
+
+					<!--/ Layout Demo -->
+				</div>
+			</div>
+</body>
+</html>

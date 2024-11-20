@@ -1,0 +1,67 @@
+
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Plantilla/Plantilla}">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+<title>Lista De usuarios</title>
+
+<meta name="description" content="" />
+
+<!-- Favicon -->
+</head>
+
+<body>
+	<div layout:fragment="espaciocontenidohtml">
+		<div class="container-fluid flex-grow-1 container-p-y">
+			<!-- Layout Demo -->
+			<div>
+				<a th:href="@{/nuevoUsuario}" class="btn btn-outline-primary"><i
+					class="fa fa-plus"></i></a>
+			</div>
+			<div class="card">
+				<h5 class="card-header">Table Basic</h5>
+				<div class="table-responsive text-nowrap">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">idUsuario</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Apellido</th>
+								<th scope="col">Email</th>
+								<th scope="col">Direccion</th>
+								<th scope="col">Telefono</th>
+								<th scope="col">Modificar / Eliminar</th>
+							</tr>
+						</thead>
+						<tbody class="table-border-bottom-0">
+							<tr th:each="usuario: ${Lista}">
+								<td th:text="${usuario.idUsuario}"></td>
+								<td th:text="${usuario.nombre}"></td>
+								<td th:text="${usuario.apellido}"></td>
+								<td th:text="${usuario.email}"></td>
+								<td th:text="${usuario.direccion}"></td>
+								<td th:text="${usuario.telefono}"></td>
+								<td>
+									<!-- Enlace para modificar --> 
+									<a th:href="@{/editar/}+${usuario.idUsuario}"
+									class="btn btn-outline-success btn-sm"> Modificar </a> 
+									<!-- Enlace para eliminar -->
+									<a th:href="@{/eliminar/}+${usuario.idUsuario}"
+									class="btn btn-outline-danger btn-sm"> Eliminar </a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!--/ Layout Demo -->
+		</div>
+	</div>
+</body>
+</html>

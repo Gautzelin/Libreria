@@ -1,0 +1,59 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{Plantilla/Plantilla}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Lista de Libros</title>
+</head>
+
+<body>
+<div layout:fragment="espaciocontenidohtml">
+    <div class="container-fluid flex-grow-1 container-p-y">
+        <!-- Botón para agregar un nuevo libro -->
+        <div>
+            <a th:href="@{/nuevoLibros}" class="btn btn-outline-primary">
+                <i class="fa fa-plus"></i> Agregar Nuevo Libro
+            </a>
+        </div>
+        <!-- Tabla para mostrar los libros -->
+        <div class="card">
+            <h5 class="card-header">Lista de Libros</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Género</th>
+                            <th scope="col">Año de Publicación</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        <tr th:each="libro: ${Lista}">
+                            <td th:text="${libro.id}"></td>
+                            <td th:text="${libro.tituloLibro}"></td>
+                            <td th:text="${libro.generoLibro}"></td>
+                            <td th:text="${libro.anioPublicacion}"></td>
+                            <td>
+                                <!-- Enlace para editar -->
+                                <a th:href="@{/editar/}+${libro.id}" class="btn btn-outline-success btn-sm">
+                                    Editar
+                                </a>
+                                <!-- Enlace para eliminar -->
+                                <a th:href="@{/eliminar/}+${libro.id}" class="btn btn-outline-danger btn-sm">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
